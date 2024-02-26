@@ -1,4 +1,3 @@
-
 #include "Student.h"
 
 int Student::getId() const {
@@ -49,14 +48,9 @@ void Student::setDept(const string& dept) {
     Student::dept = dept;
 }
 
-Student::Student(const string& sname, int age, const string& sex, const string& native, const string& dept)
-    :sname(sname), age(age), sex(sex), native(native), dept(dept) {
-    //Ä¬ÈÏ½«idÉèÖÃÎª0
-    this->id = 0;
-}
 
 Student::Student() {
-    //Ä¬ÈÏÐ´Îª0£¬²åÈëÊý¾Ý¿âÖÐ»á×ÔÔö
+    //ƒ¨»œ–¥Œ™0£¨≤Â»Î ˝æ›ø‚÷–ª·◊‘‘ˆ
     this->id = 0;
 }
 
@@ -74,7 +68,7 @@ bool Student::operator!=(const Student& rhs) const {
 }
 
 Student::~Student() {
-    cout << "Ñ§Éú" << this->id << " ÒÑ¾­±»Ïú»Ù" << endl;
+    cout << "—ß…˙" << this->sname << " “—æ≠±ªœ˙ªŸ" << endl;
 }
 
 ostream& operator<<(ostream& os, const Student& student) {
@@ -82,3 +76,7 @@ ostream& operator<<(ostream& os, const Student& student) {
         << " native: " << student.native << " dept: " << student.dept;
     return os;
 }
+
+Student::Student(const string& sname, int age, const string& sex, const string& native, const string& dept) : sname(
+    sname), age(age), sex(sex), native(native), dept(dept) {}
+
