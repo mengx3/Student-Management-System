@@ -39,7 +39,7 @@ void Course::setValue(int value) {
 }
 
 Course::~Course() {
-    cout << this->name << "¿Î³Ì³É¼¨ÐÅÏ¢ÒÑ¾­Ïú»Ù" << endl;
+    cout << this->name << "è¯¾ç¨‹æˆç»©ä¿¡æ¯å·²ç»é”€æ¯" << endl;
 }
 
 ostream& operator<<(ostream& os, const Course& course) {

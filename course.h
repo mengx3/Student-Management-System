@@ -2,26 +2,27 @@
 #define STUSYSTEMGUI_COURSE_H
 
 #include<string>
+#include<iostream>
 using namespace std;
 
-class course {
+class Course {
     int id;
     string name;
     int score;
     int value;
-    int tid;
-public:
-    course(int id, const string &name, int score, int value, int tid);
 
-    course();
+public:
+    Course(int id, const string& name, int score, int value);
+
+    Course();
 
     int getId() const;
 
     void setId(int id);
 
-    const string &getName() const;
+    const string& getName() const;
 
-    void setName(const string &name);
+    void setName(const string& name);
 
     int getScore() const;
 
@@ -34,6 +35,10 @@ public:
     int getTid() const;
 
     void setTid(int tid);
+
+    virtual ~Course();
+
+    friend ostream& operator<<(ostream& os, const Course& course);
 };
 
 
