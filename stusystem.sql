@@ -53,4 +53,25 @@ CREATE TABLE `department` (
 -- ----------------------------
 -- Records of department
 -- ----------------------------
+INSERT INTO `department` VALUES ('J1009', 'Architecture Department', 'Xiaojuan', '500', '461');
+INSERT INTO `department` VALUES ('Y1018', 'Art Department', 'Xiaojun', '500', '461');
+INSERT INTO `department` VALUES ('S1014', 'Biology Department', 'Xiaomin', '500', '461');
+INSERT INTO `department` VALUES ('H1003', 'Chemistry Department', 'Xiaofang', '500', '461');
+INSERT INTO `department` VALUES ('C1001', 'Communications Department', 'Xiaohong', '500', '461');
+INSERT INTO `department` VALUES ('J1019', 'Computer Science Department', 'Xiaofang', '500', '461');
+INSERT INTO `department` VALUES ('J1017', 'Economics Department', 'Xiaohong', '500', '461');
+INSERT INTO `department` VALUES ('J1011', 'Education Department', 'Xiaobin', '500', '461');
+INSERT INTO `department` VALUES ('D1015', 'Electrical Engineering Department', 'Xiaotao', '500', '461');
+INSERT INTO `department` VALUES ('G1008', 'Engineering Department', 'Xiaoliang', '500', '461');
+INSERT INTO `department` VALUES ('W1007', 'Foreign Languages Department', 'Xiaohua', '500', '461');
+INSERT INTO `department` VALUES ('D1006', 'Geography Department', 'Xiaomei', '500', '461');
+INSERT INTO `department` VALUES ('L1005', 'History Department', 'Xiaoqiang', '500', '461');
+INSERT INTO `department` VALUES ('G1016', 'Management Department', 'Xiaoyan', '500', '461');
+INSERT INTO `department` VALUES ('S1012', 'Mathematics Department', 'Xiaolei', '500', '461');
+INSERT INTO `department` VALUES ('Y1004', 'Medical Department', 'Xiaolan', '500', '461');
+INSERT INTO `department` VALUES ('Y1020', 'Music Department', 'Xiaolan', '500', '461');
+INSERT INTO `department` VALUES ('W1013', 'Physics Department', 'Xiaona', '500', '461');
+INSERT INTO `department` VALUES ('Z1010', 'Politics and Law Department', 'Xiaohui', '500', '461');
+INSERT INTO `department` VALUES ('T1002', 'Sports Department', 'Xiaojun', '500', '461');
+
 
