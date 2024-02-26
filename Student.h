@@ -2,32 +2,32 @@
 #define STUSYSTEMGUI_STUDENT_H
 #include <iostream>
 #include<string>
-//输出流，用于重载<<运算符
+// ‰≥ˆ¡˜£¨”√”⁄÷ÿ‘ÿ<<‘ÀÀ„∑˚
 #include <ostream>
 
 using namespace std;
 
-//学生类
+//—ß…˙¿‡
 class Student {
 private:
-    //学号
+    //—ß∫≈
     int id;
-    //学生姓名
+    //—ß…˙–’√˚
     string sname;
-    //学生年龄
+    //—ß…˙ƒÍ¡‰
     int age;
-    //学生性别
+    //—ß…˙–‘±
     string sex;
-    //学生籍贯
+    //—ß…˙ºÆπ·
     string native;
-    //学生的系别
+    //—ß…˙µƒœµ±
     string dept;
 
 public:
-    //无参构造函数
+    //Œﬁ≤Œππ‘Ï∫Ø ˝
     Student();
 
-    //有参构造，不需要id，数据库中设置为自增了
+    //”–≤Œππ‘Ï£¨≤ª–Ë“™id£¨ ˝æ›ø‚÷–…Ë÷√Œ™◊‘‘ˆ¡À
     Student(const string& sname, int age, const string& sex, const string& native, const string& dept);
 
     //
@@ -55,16 +55,16 @@ public:
 
     void setDept(const string& dept);
 
-    //重载==运算符，用于判断两个学生对象是否相等
+    //÷ÿ‘ÿ==‘ÀÀ„∑˚£¨”√”⁄≈–∂œ¡Ω∏ˆ—ß…˙∂‘œÛ «∑Òœ‡µ»
     bool operator==(const Student& rhs) const;
 
-    //重载!=运算府
+    //÷ÿ‘ÿ!=‘ÀÀ„∏Æ
     bool operator!=(const Student& rhs) const;
 
-    //析构函数，销毁对象
+    //Œˆππ∫Ø ˝£¨œ˙ªŸ∂‘œÛ
     virtual ~Student();
 
-    //重载输出<<运算府，便于直接查看学生对象
+    //÷ÿ‘ÿ ‰≥ˆ<<‘ÀÀ„∏Æ£¨±„”⁄÷±Ω”≤Èø¥—ß…˙∂‘œÛ
     friend ostream& operator<<(ostream& os, const Student& student);
 
 };
