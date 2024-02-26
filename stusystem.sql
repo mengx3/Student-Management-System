@@ -116,38 +116,36 @@ INSERT INTO `department` VALUES ('T1002', 'Sports Department', 'Xiaojun', '500',
 
 
 -- ----------------------------
--- Table structure for department
+-- Table structure for teacher
 -- ----------------------------
-DROP TABLE IF EXISTS `department`;
-CREATE TABLE `department` (
-  `did` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `director` varchar(255) DEFAULT NULL,
-  `capcity` int DEFAULT NULL,
-  `num` int DEFAULT '461',
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE `teacher` (
+  `tid` int NOT NULL AUTO_INCREMENT,
+  `tname` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `salary` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`tid`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of department
+-- Records of teacher
 -- ----------------------------
-INSERT INTO `department` VALUES ('J1009', 'Architecture Department', 'Xiaojuan', '500', '461');
-INSERT INTO `department` VALUES ('Y1018', 'Art Department', 'Xiaojun', '500', '461');
-INSERT INTO `department` VALUES ('S1014', 'Biology Department', 'Xiaomin', '500', '461');
-INSERT INTO `department` VALUES ('H1003', 'Chemistry Department', 'Xiaofang', '500', '461');
-INSERT INTO `department` VALUES ('C1001', 'Communications Department', 'Xiaohong', '500', '461');
-INSERT INTO `department` VALUES ('J1019', 'Computer Science Department', 'Xiaofang', '500', '461');
-INSERT INTO `department` VALUES ('J1017', 'Economics Department', 'Xiaohong', '500', '461');
-INSERT INTO `department` VALUES ('J1011', 'Education Department', 'Xiaobin', '500', '461');
-INSERT INTO `department` VALUES ('D1015', 'Electrical Engineering Department', 'Xiaotao', '500', '461');
-INSERT INTO `department` VALUES ('G1008', 'Engineering Department', 'Xiaoliang', '500', '461');
-INSERT INTO `department` VALUES ('W1007', 'Foreign Languages Department', 'Xiaohua', '500', '461');
-INSERT INTO `department` VALUES ('D1006', 'Geography Department', 'Xiaomei', '500', '461');
-INSERT INTO `department` VALUES ('L1005', 'History Department', 'Xiaoqiang', '500', '461');
-INSERT INTO `department` VALUES ('G1016', 'Management Department', 'Xiaoyan', '500', '461');
-INSERT INTO `department` VALUES ('S1012', 'Mathematics Department', 'Xiaolei', '500', '461');
-INSERT INTO `department` VALUES ('Y1004', 'Medical Department', 'Xiaolan', '500', '461');
-INSERT INTO `department` VALUES ('Y1020', 'Music Department', 'Xiaolan', '500', '461');
-INSERT INTO `department` VALUES ('W1013', 'Physics Department', 'Xiaona', '500', '461');
-INSERT INTO `department` VALUES ('Z1010', 'Politics and Law Department', 'Xiaohui', '500', '461');
-INSERT INTO `department` VALUES ('T1002', 'Sports Department', 'Xiaojun', '500', '461');
+INSERT INTO `teacher` VALUES ('1', 'Qiao Feng', 'male', '35', 'Headmaster', '20000');
+INSERT INTO `teacher` VALUES ('2', 'Duan Yu', 'male', '28', 'Hall Master', '15000');
+INSERT INTO `teacher` VALUES ('3', 'Xu Zhu', 'male', '30', 'Protector', '18000');
+INSERT INTO `teacher` VALUES ('4', 'Murong Fu', 'male', '38', 'Hall Master', '22000');
+INSERT INTO `teacher` VALUES ('5', 'Wang Yuyan', 'female', '26', 'Hall Master\'s Wife', '16000');
+INSERT INTO `teacher` VALUES ('6', 'A Zhu', 'female', '32', 'Hall Master\'s Wife', '14000');
+INSERT INTO `teacher` VALUES ('7', 'A Bi', 'female', '24', 'Hall Master\'s Maid', '8000');
+INSERT INTO `teacher` VALUES ('8', 'Zhong Ling', 'female', '18', 'Hall Master\'s Maid', '6000');
+INSERT INTO `teacher` VALUES ('9', 'Mu Wanqing', 'female', '20', 'Hall Master\'s Maid', '7000');
+INSERT INTO `teacher` VALUES ('10', 'Meng Gu', 'female', '40', 'Abbess', '25000');
+INSERT INTO `teacher` VALUES ('11', 'Tianshan Tonglao', 'female', '99', 'Head Abbess', '30000');
+INSERT INTO `teacher` VALUES ('12', 'Li QiuShui', 'female', '88', 'Supreme Head', '28000');
+INSERT INTO `teacher` VALUES ('13', 'Wu Ya zi', 'male', '100', 'Ancestor', '35000');
+INSERT INTO `teacher` VALUES ('14', 'Ding Chunqiu', 'male', '66', 'Uncle', '26000');
+INSERT INTO `teacher` VALUES ('15', 'Su Xinghe', 'male', '72', 'Uncle', '24000');
+INSERT INTO `teacher` VALUES ('16', 'Duan Yanqing', 'male', '54', 'Protector', '12000');
+INSERT INTO `teacher` VALUES ('17', 'You Tanzhi', 'male', '20', 'Servant', '5000');
