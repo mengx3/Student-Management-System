@@ -12,3 +12,14 @@ CREATE TABLE `course` (
   `tid` int DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of course
+-- ----------------------------
+INSERT INTO `course` VALUES ('1', 'English', '89', '5', '13');
+INSERT INTO `course` VALUES ('2', 'gMath', '67', '5', '19');
+INSERT INTO `course` VALUES ('3', 'gMath', '78', '5', '14');
+INSERT INTO `course` VALUES ('4', 'gMath', '67', '5', '15');
+INSERT INTO `course` VALUES ('5', 'gMath', '85', '5', '13');
+INSERT INTO `course` VALUES ('6', 'gMath', '46', '5', '19');
+INSERT INTO `course` VALUES ('7', 'gMath', '23', '5', '15');
