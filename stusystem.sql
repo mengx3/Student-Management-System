@@ -36,3 +36,21 @@ INSERT INTO `course` VALUES ('17', 'gMath', '82', '5', '10');
 INSERT INTO `course` VALUES ('18', 'gMath', '84', '5', '17');
 INSERT INTO `course` VALUES ('19', 'gMath', '81', '5', '12');
 INSERT INTO `course` VALUES ('20', 'gMath', '86', '5', '9');
+
+-- ----------------------------
+-- Table structure for department
+-- ----------------------------
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `did` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `director` varchar(255) DEFAULT NULL,
+  `capcity` int DEFAULT NULL,
+  `num` int DEFAULT '461',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of department
+-- ----------------------------
+
