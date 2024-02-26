@@ -31,3 +31,8 @@ INSERT INTO `course` VALUES ('12', 'gMath', '88', '5', '4');
 INSERT INTO `course` VALUES ('13', 'gMath', '99', '5', '15');
 INSERT INTO `course` VALUES ('14', 'gMath', '100', '5', '0');
 INSERT INTO `course` VALUES ('15', 'gMath', '45', '5', '0');
+INSERT INTO `course` VALUES ('16', 'gMath', '76', '5', '18');
+INSERT INTO `course` VALUES ('17', 'gMath', '82', '5', '10');
+INSERT INTO `course` VALUES ('18', 'gMath', '84', '5', '17');
+INSERT INTO `course` VALUES ('19', 'gMath', '81', '5', '12');
+INSERT INTO `course` VALUES ('20', 'gMath', '86', '5', '9');
