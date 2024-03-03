@@ -35,3 +35,27 @@ int Teacher::getAge() const {
 void Teacher::setAge(int age) {
     Teacher::age = age;
 }
+
+const string& Teacher::getTitle() const {
+    return title;
+}
+
+void Teacher::setTitle(const string& title) {
+    Teacher::title = title;
+}
+
+int Teacher::getSalary() const {
+    return salary;
+}
+
+void Teacher::setSalary(int salary) {
+    Teacher::salary = salary;
+}
+
+int Teacher::getCoid() const {
+    return coid;
+}
+
+void Teacher::setCoid(int coid) {
+    Teacher::coid = coid;
+}
