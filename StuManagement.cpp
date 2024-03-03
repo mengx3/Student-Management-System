@@ -23,3 +23,32 @@ void StuManagement::run() {
 
     }
 }
+
+int StuManagement::menu() {
+    //Ã· æ”√ªß’‚ «≤Àµ•£¨∫Û–¯ÕÍ…∆
+    cout << "menu" << endl;
+    int op = 0;
+    //ªÒ»°”√ªß ‰»Îµƒ÷∏¡Ó
+    cin >> op;
+    return op;
+}
+
+void StuManagement::showAllStu() {
+
+}
+
+int StuManagement::AddStu() {
+    return 0;
+}
+
+int StuManagement::DelStu() {
+    return 0;
+}
+
+int StuManagement::UpdateStu() {
+    return 0;
+}
+
+vector<Student> StuManagement::CheckByName() {
+    return vector<Student>();
+}
