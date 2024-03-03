@@ -80,3 +80,4 @@ ostream& operator<<(ostream& os, const Student& student) {
 Student::Student(const string& sname, int age, const string& sex, const string& native, const string& dept) : sname(
     sname), age(age), sex(sex), native(native), dept(dept) {}
 
+
