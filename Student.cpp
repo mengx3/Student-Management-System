@@ -1,9 +1,5 @@
 #include "Student.h"
 
-int Student::getId() const {
-    return id;
-}
-
 void Student::setId(int id) {
     Student::id = id;
 }
