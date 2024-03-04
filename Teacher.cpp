@@ -59,3 +59,30 @@ int Teacher::getCoid() const {
 void Teacher::setCoid(int coid) {
     Teacher::coid = coid;
 }
+
+ostream& operator<<(ostream& os, const Teacher& teacher) {
+    os << "tid: " << teacher.tid << " tname: " << teacher.tname << " sex: " << teacher.sex << " age: " << teacher.age
+        << " title: " << teacher.title << " salary: " << teacher.salary << " coid: " << teacher.coid;
+    return os;
+}
+
+bool Teacher::operator==(const Teacher& rhs) const {
+    return tid == rhs.tid &&
+        tname == rhs.tname &&
+        sex == rhs.sex &&
+        age == rhs.age &&
+        title == rhs.title &&
+        salary == rhs.salary &&
+        coid == rhs.coid;
+}
+
+bool Teacher::operator!=(const Teacher& rhs) const {
+    return !(rhs == *this);
+}
+
+Teacher::~Teacher() {
+    //
+    cout << "½ÌÊ¦¶ÔÏó" << this->tname << "ÒÑ¾­Ïú»Ù" << endl;
+}
+
+
