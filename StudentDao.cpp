@@ -13,4 +13,16 @@ vector<Student> StudentDao::GetAllStudent() {
     connectDb.connect();
 
     MYSQL* con = connectDb.getCon();
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from student");
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("≤È—Ø ß∞‹£°\n");
+        return vector<Student>();
+    }
+
 }
