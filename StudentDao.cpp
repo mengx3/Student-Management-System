@@ -25,4 +25,22 @@ vector<Student> StudentDao::GetAllStudent() {
         return vector<Student>();
     }
 
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    vector<Student>stuList;
+    while ((row = mysql_fetch_row(res))) {
+        Student stu;
+        stu.setId(atoi(row[0]));
+        stu.setSname(row[1]);
+        stu.setSex(row[2]);
+        stu.setAge(atoi(row[3]));
+        stu.setNative(row[4]);
+        stu.setDept(row[5]);
+        stuList.push_back(stu);
+        //        cout<<"here!"<<endl;
+    }
+
+    return stuList;
+
 }
