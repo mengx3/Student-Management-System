@@ -87,4 +87,22 @@ int StudentDao::DelStudent(int id) {
 
     ConnectDB connectDb(host, user, pw, dbName, port);
     connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(delSql, "delete from student where id = %d", id);
+
+    printf("\ndelSql\n:  %s", delSql);
+
+    //execute query
+    if (mysql_query(con, delSql)) {
+        fprintf(stderr, "Failed to delete data :Error %s", mysql_error(con));
+        printf("…æ≥˝ ß∞‹£°\n");
+        return 0;
+    }
+
+    return 1;
 }
