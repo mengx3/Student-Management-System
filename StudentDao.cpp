@@ -106,3 +106,22 @@ int StudentDao::DelStudent(int id) {
 
     return 1;
 }
+
+int StudentDao::UpdateStudent(Student student) {
+
+
+    //declare a sql  sentence
+    char updateSql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+    return 1;
+}
+
+
