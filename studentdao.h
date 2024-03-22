@@ -37,4 +37,19 @@ public:
     //getAllStudent function
     vector<Student>GetAllStudent();
 
+    //AddStudent function
+    int AddStudent(Student student);
+
+    //Delete function
+    int DelStudent(int id);
+
+    //update function
+    int UpdateStudent(Student student);
+
+    //get Student by name
+    vector<Student> CheckByName(char name[]);
+
 };
+
+#endif //STUSYSTEMGUI_STUDENTDAO_H
+
