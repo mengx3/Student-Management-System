@@ -75,4 +75,16 @@ int StudentDao::AddStudent(Student student) {
     return 1;
 }
 
+int StudentDao::DelStudent(int id) {
 
+
+    //declare a sql  sentence
+    char delSql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+}
