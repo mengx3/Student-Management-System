@@ -44,3 +44,23 @@ vector<Student> StudentDao::GetAllStudent() {
     return stuList;
 
 }
+
+int StudentDao::AddStudent(Student student) {
+
+
+    //declare a sql  sentence
+    char insertSql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+}
+
+
