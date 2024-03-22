@@ -138,4 +138,24 @@ int StudentDao::UpdateStudent(Student student) {
     return 1;
 }
 
+vector<Student> StudentDao::CheckByName(char* name) {
+    //declare a sql  sentence
+    char sql[256];
 
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from student where sname like '%%%s%%'", name);
+    printf("\nƒ£∫˝≤È—Øµƒsql:%s\n", sql);
+
+    return stuList;
+}
