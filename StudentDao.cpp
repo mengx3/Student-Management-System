@@ -61,6 +61,18 @@ int StudentDao::AddStudent(Student student) {
     MYSQL* con = connectDb.getCon();
 
     //    cout<<"come to here!"<<endl;
+        //using sprintf to init sql
+    sprintf(insertSql, "insert into student (sname,sex,age,native,dept) values ('%s','%s',%d,'%s','%s')",
+        student.getSname().c_str(), student.getSex().c_str(), student.getAge(), student.getNative().c_str(), student.getDept().c_str());
+
+    //execute query
+    if (mysql_query(con, insertSql)) {
+        fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
+        printf("≤Â»Î ß∞‹£°\n");
+        return 0;
+    }
+
+    return 1;
 }
 
 
