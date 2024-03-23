@@ -42,3 +42,25 @@ void Window::clear()
 
 	::cleardevice();
 }
+
+void Window::beginDraw()
+{
+
+	::BeginBatchDraw();
+
+}
+
+void Window::flushDraw()
+{
+
+	::FlushBatchDraw();
+
+}
+
+void Window::endDraw()
+{
+
+	::EndBatchDraw();
+
+}
+
