@@ -59,6 +59,27 @@ StuManagement::StuManagement()
 
 void StuManagement::run() {
     int op = menu();
+
+    vector<Student>stuLsit;
+
+    //get the StudentList
+    stuLsit = showAllStu();
+
+    stuTable->setData(stuLsit);
+
+    ////setRowNum
+    //stuTable->setRowNum(stuLsit.size());
+
+    Window::beginDraw();
+
+    while (true)
+    {
+       
+        Window::clear();
+        //start to draw the background
+        drawBackground();
+    }
+
     switch (op) {
     case StuManagement::ShowAll:
         showAllStu();
