@@ -1,11 +1,12 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 #include "Course.h"
 #include "Deptartment.h"
 #include "Student.h"
 #include "Teacher.h"
 
-int main() {
+int main()
+{
     // Create a course object and test output operator <<
     Course c1(17, "Chinese", 88, 4);
     cout << c1 << endl;
@@ -71,6 +72,18 @@ int main() {
     // Test !=
     cout << (t1 != t2) << endl;
     cout << (t1 != t3) << endl;
+
+    // Test
+
+    string a = "aaaa", b = "aaaab";
+    if (a == "aaaa")
+    {
+        cout << "a==b" << endl;
+    }
+    else
+    {
+        cout << "a!=b" << endl;
+    }
 
     return 0;
 }
