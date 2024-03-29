@@ -109,35 +109,53 @@ void StuManagement::run() {
 
     }
 
-    switch (op) {
-    case StuManagement::ShowAll:
-        showAllStu();
-        break;
-    case StuManagement::Add:
-        AddStu();
-        break;
-    case StuManagement::Del:
-        DelStu();
-        break;
-    case StuManagement::Update:
-        UpdateStu();
-        break;
-    case StuManagement::SearchByName:
-        CheckByName();
-        break;
-    default:
-        break;
+        switch (op) {
+        case StuManagement::ShowAll:
+            showAllStu();
+            break;
+        case StuManagement::Add:
+            AddStu();
+            break;
+        case StuManagement::Del:
+            DelStu();
+            break;
+        case StuManagement::Update:
+            UpdateStu();
+            break;
+        case StuManagement::SearchByName:
+            CheckByName();
+            break;
+        default:
+            break;
+    
+        }
+        Window::flushDraw();
 
     }
+    Window::endDraw();
 }
 
 int StuManagement::menu() {
-    //Ã· æ”√ªß’‚ «≤Àµ•£¨∫Û–¯ÕÍ…∆
-    cout << "menu" << endl;
-    int op = 0;
-    //ªÒ»°”√ªß ‰»Îµƒ÷∏¡Ó
-    cin >> op;
-    return op;
+    for (int i = 0; i < menu_btns.size(); i++) {
+        //draw the button
+        menu_btns[i]->show();
+
+        menu_btns[i]->eventLoop(message);
+
+        //if a button is clicked
+        if (menu_btns[i]->isClicked()) {
+
+            //show which button is clicked
+            cout << menu_btns[i]->getText() << "±ªµ„ª˜£°" << endl;
+            //system("pause");
+
+            //return the index of button
+            return i;
+        }
+    }
+    
+
+    return Menu;
 }
 
 void StuManagement::showAllStu() {
