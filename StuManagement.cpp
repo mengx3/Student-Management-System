@@ -159,21 +159,50 @@ int StuManagement::menu() {
 }
 
 void StuManagement::showAllStu() {
-
+    outtextxy(0, 0, "SHOW");
+    
+    vector<Student> stuList = studentDao.GetAllStudent();
+    
+    //return the list
+    return stuList;
 }
 
 int StuManagement::AddStu() {
+    outtextxy(0, 0, "AddStu");
+    cout << "ADDSTU" << endl;
     return 0;
 }
 
 int StuManagement::DelStu() {
+    outtextxy(0, 0, "DELSTU");
+    cout << "DELSTU" << endl;
     return 0;
 }
 
 int StuManagement::UpdateStu() {
+    outtextxy(0, 0, "UPDATESTU");
+    cout << "UPDATE" << endl;
     return 0;
 }
 
 vector<Student> StuManagement::CheckByName() {
+    outtextxy(0, 0, "CHECKBYNAME");
+    cout << "CHECKBYNAME" << endl;
     return vector<Student>();
 }
+
+void StuManagement::drawBackground()
+{
+
+    ::putimage(0, 0, &backgroundPicture);
+
+}
+
+void StuManagement::eventLoop()
+{
+    stuTable->eventLoop(message);
+}
+
+
+
+
