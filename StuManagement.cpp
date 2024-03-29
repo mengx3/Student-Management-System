@@ -1,4 +1,25 @@
 #include "StuManagement.h"
+#include<iostream>
+#include"Window.h"
+#include<conio.h>
+#include<stdlib.h>
+
+StuManagement::StuManagement()
+{
+    //load the backgroundPicture;
+    ::loadimage(&backgroundPicture, "./imags/bg.jpg", Window::width(), Window::height());
+
+    //the style of font
+    ::settextstyle(25, 0, "ÀŒÃÂ");
+
+    //mainview button init
+    menu_btns.push_back(new PushButton("≤Èø¥—ß…˙"));
+    menu_btns.push_back(new PushButton("ÃÌº”—ß…˙"));
+    menu_btns.push_back(new PushButton("…æ≥˝—ß…˙"));
+    menu_btns.push_back(new PushButton("–ﬁ∏ƒ—ß…˙"));
+    menu_btns.push_back(new PushButton("≤È’“—ß…˙"));
+    menu_btns.push_back(new PushButton("ÕÀ≥ˆœµÕ≥"));
+}
 
 void StuManagement::run() {
     int op = menu();
