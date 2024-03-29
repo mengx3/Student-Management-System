@@ -11,6 +11,9 @@ public:
     //constructor
     BasicWidget(int mX, int mY, int mW, int mH);
 
+    //destructor
+    virtual ~BasicWidget(){}
+
     int getMX() const;
 
     int getMY() const;
