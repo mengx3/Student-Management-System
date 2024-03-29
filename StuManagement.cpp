@@ -19,6 +19,42 @@ StuManagement::StuManagement()
     menu_btns.push_back(new PushButton("–ﬁ∏ƒ—ß…˙"));
     menu_btns.push_back(new PushButton("≤È’“—ß…˙"));
     menu_btns.push_back(new PushButton("ÕÀ≥ˆœµÕ≥"));
+
+    //the number of buttons
+    int btnNum = menu_btns.size();
+
+    //make the buttons in the center
+    int totalHeight = btnNum * menu_btns[0]->getMH();
+    //the start height of buttons
+    int startHeight = (Window::height() - totalHeight) / 2;
+
+
+    //set every button
+    for (int i = 0; i < menu_btns.size(); i++) {
+        //set sizes
+        menu_btns[i]->setFixSize(250, 50);
+        int bx = (Window::width() - menu_btns[i]->getMW()) / 2;
+        int by = startHeight + i * menu_btns[i]->getMH();
+
+        menu_btns[i]->move(bx, by);
+    }
+
+    tableHeader = "—ß∫≈\t–’√˚\t–‘±\tƒÍ¡‰\tºÆπ·\t—ß‘∫";
+
+    //init the table
+    stuTable = new StuTable;
+    stuTable->setRowNum(10);
+    stuTable->setColNum(6);
+    stuTable->setHeader(tableHeader);
+
+    //move to
+    //stuTable->move(20,30);
+
+
+    //made the table in center
+    stuTable->move((Window::width() - stuTable->getGridWidth() * stuTable->getColNum())/2,60);
+
+
 }
 
 void StuManagement::run() {
