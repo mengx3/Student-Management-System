@@ -71,6 +71,13 @@ Student::~Student() {
     cout << "—ß…˙" << this->sname << " “—æ≠±ªœ˙ªŸ" << endl;
 }
 
+string Student::toString()
+{
+    char stuString[512];
+    sprintf(stuString, "%d\t%s\t%s\t%d\t%s\t%s",id,sname.c_str(), sex.c_str(), age, native.c_str(), dept.c_str());
+    return string(stuString);
+}
+
 ostream& operator<<(ostream& os, const Student& student) {
     os << "id: " << student.id << " sname: " << student.sname << " age: " << student.age << " sex: " << student.sex
         << " native: " << student.native << " dept: " << student.dept;

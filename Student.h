@@ -67,6 +67,8 @@ public:
     //÷ÿ‘ÿ ‰≥ˆ<<‘ÀÀ„∏Æ£¨±„”⁄÷±Ω”≤Èø¥—ß…˙∂‘œÛ
     friend ostream& operator<<(ostream& os, const Student& student);
 
+    //get the student string
+    string toString();
 };
 
 
