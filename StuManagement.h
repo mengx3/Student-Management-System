@@ -2,9 +2,12 @@
 #define STUSYSTEMGUI_STUMANAGEMENT_H
 
 #include "Student.h"
+#include"Window.h"
 #include<vector>
+#include"PushButton.h"
+#include "StudentDao.h"
+#include"StuTable.h"
 using namespace std;
-
 
 class StuManagement {
 private:
@@ -16,9 +19,11 @@ private:
         Del,
         Update,
         SearchByName
+        Menu=66
     };
 
 public:
+    StuManagement();
 
     //∆Ù∂Øπ‹¿Ì¿‡
     void run();
@@ -27,7 +32,7 @@ public:
     int menu();
 
     // ≤Èø¥À˘”–µƒ—ß…˙
-    void showAllStu();
+    vector<Student>showAllStu();
 
     //‘ˆÃÌ—ß…˙
     int AddStu();
@@ -40,6 +45,30 @@ public:
 
     //≤È’“
     vector<Student>CheckByName();
+
+    //draw the background
+    void drawBackground();
+
+    //eventLoop
+    void eventLoop();
+
+private:
+    ExMessage message;	
+
+    //background picture
+    IMAGE backgroundPicture;
+
+    vector<PushButton*> menu_btns; 
+
+    StudentDao studentDao;
+
+private:
+
+    //the student's table
+    StuTable* stuTable;
+
+    //table's header
+    string tableHeader;
 
 };
 
