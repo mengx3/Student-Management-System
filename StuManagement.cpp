@@ -78,6 +78,35 @@ void StuManagement::run() {
         Window::clear();
         //start to draw the background
         drawBackground();
+
+        //test the window class
+        if (Window::hasMessage()) {
+            //getMessage
+            message = Window::getMessage();
+
+            //deal with the message
+            switch (message.message)
+            {
+                //when a key was pressed
+            case WM_KEYDOWN:
+                //back to the mainMenu when ESC was pressed
+                cout << "a key was pressed" << endl;
+                if (message.vkcode == VK_ESCAPE) {
+
+                    cout << "ESC was pressed!" << endl;
+                    op = Menu;
+
+                }
+                break;
+
+                //when mouse was clicked
+            default:
+                eventLoop();
+
+                break;
+            }
+
+
     }
 
     switch (op) {
