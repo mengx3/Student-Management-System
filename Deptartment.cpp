@@ -1,4 +1,3 @@
-
 #include "Deptartment.h"
 
 Deptartment::Deptartment(const string& name, const string& director, int capcity, int num) : did(did),
