@@ -1,7 +1,3 @@
-//
-// Created by bingfenhaochi on 2024/3/19.
-//
-
 #include "StuTable.h"
 
 vector<string> StuTable::split(string str, char seperator='\t')
