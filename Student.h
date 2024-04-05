@@ -4,6 +4,7 @@
 #include<string>
 // ‰≥ˆ¡˜£¨”√”⁄÷ÿ‘ÿ<<‘ÀÀ„∑˚
 #include <ostream>
+#include<sstream>
 
 using namespace std;
 
@@ -69,6 +70,9 @@ public:
 
     //get the student string
     string toString();
+
+    //change a string to a Student object
+    static Student StringToStu(string str);
 };
 
 
