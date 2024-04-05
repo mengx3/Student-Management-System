@@ -68,7 +68,7 @@ bool Student::operator!=(const Student& rhs) const {
 }
 
 Student::~Student() {
-    cout << "—ß…˙" << this->sname << " “—æ≠±ªœ˙ªŸ" << endl;
+    //cout << "—ß…˙" << this->sname << " has been destroyed" << endl;
 }
 
 string Student::toString()
@@ -78,6 +78,16 @@ string Student::toString()
     return string(stuString);
 }
 
+Student Student::StringToStu(string str)
+{
+
+    Student s;
+    stringstream ss(str);
+    ss >> s.sname >> s.sex >> s.age >> s.native >> s.dept;
+    return s;
+
+}
+
 ostream& operator<<(ostream& os, const Student& student) {
     os << "id: " << student.id << " sname: " << student.sname << " age: " << student.age << " sex: " << student.sex
         << " native: " << student.native << " dept: " << student.dept;
@@ -85,6 +95,7 @@ ostream& operator<<(ostream& os, const Student& student) {
 }
 
 Student::Student(const string& sname, int age, const string& sex, const string& native, const string& dept) : sname(
-    sname), age(age), sex(sex), native(native), dept(dept) {}
-
+    sname), age(age), sex(sex), native(native), dept(dept) {
+    id = 0;
+}
 
