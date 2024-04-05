@@ -13,6 +13,7 @@ vector<Student> StudentDao::GetAllStudent() {
     connectDb.connect();
 
     MYSQL* con = connectDb.getCon();
+
     //    cout<<"come to here!"<<endl;
 
         //using sprintf to init sql
@@ -42,7 +43,6 @@ vector<Student> StudentDao::GetAllStudent() {
     }
 
     return stuList;
-
 }
 
 int StudentDao::AddStudent(Student student) {
@@ -61,6 +61,7 @@ int StudentDao::AddStudent(Student student) {
     MYSQL* con = connectDb.getCon();
 
     //    cout<<"come to here!"<<endl;
+
         //using sprintf to init sql
     sprintf(insertSql, "insert into student (sname,sex,age,native,dept) values ('%s','%s',%d,'%s','%s')",
         student.getSname().c_str(), student.getSex().c_str(), student.getAge(), student.getNative().c_str(), student.getDept().c_str());
@@ -121,7 +122,7 @@ int StudentDao::UpdateStudent(Student student) {
     connectDb.connect();
 
     MYSQL* con = connectDb.getCon();
-    
+
     //    cout<<"come to here!"<<endl;
 
         //using sprintf to init sql
@@ -134,8 +135,60 @@ int StudentDao::UpdateStudent(Student student) {
         printf("≤Â»Î ß∞‹£°\n");
         return 0;
     }
-    
+
     return 1;
+}
+
+Student StudentDao::CheckById(int id)
+{
+    //declare a sql  sentence
+    char sql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from student where id = %d",id);
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("≤È—Ø ß∞‹£°\n");
+        Student s;
+
+        //a special mark
+        s.setId(-1);
+        return s;
+    }
+
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    vector<Student>stuList;
+    while ((row = mysql_fetch_row(res))) {
+        Student stu;
+        stu.setId(atoi(row[0]));
+        stu.setSname(row[1]);
+        stu.setSex(row[2]);
+        stu.setAge(atoi(row[3]));
+        stu.setNative(row[4]);
+        stu.setDept(row[5]);
+        stuList.push_back(stu);
+        //        cout<<"here!"<<endl;
+    }
+    if(stuList.size()>0)
+        return stuList[0];
+    Student s;
+    s.setId(-1);
+    return s;
 }
 
 vector<Student> StudentDao::CheckByName(char* name) {
@@ -182,3 +235,4 @@ vector<Student> StudentDao::CheckByName(char* name) {
 
     return stuList;
 }
+
