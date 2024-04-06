@@ -292,8 +292,43 @@ int StuManagement::DelStu() {
 }
 
 int StuManagement::UpdateStu() {
-    outtextxy(0, 0, "UPDATESTU");
-    cout << "UPDATE" << endl;
+    const char* addTitle = "请按照格式输入修改后的学生信息 学号 姓名 性别 年龄 籍贯 院系";
+
+    //set the style of font
+    settextstyle(30, 0, "宋体");
+
+    //begin to draw the font
+    outtextxy((Window::width() - textwidth(addTitle)) / 2, 200, addTitle);
+
+    //show
+    updateLine->show();
+
+    updateBtn->show();
+
+    string val = updateLine->getContent();
+
+    if (!val.empty()&&updateBtn->isClicked()) {
+
+        cout << "Val:" << val << endl;
+
+        stringstream ss(val);
+        string sid, sex, age,sname, dept, native;
+        ss >> sid >> sname >> sex >> age >> native >> dept;
+        Student s;
+        s.setId(stoi(sid));
+        s.setSname(sname);
+        s.setSex(sex);
+        s.setAge(stoi(age));
+        s.setNative(native);
+        s.setDept(dept);
+        cout << s << endl;
+
+        studentDao.UpdateStudent(s);
+
+        updateLine->clear();
+        MessageBox(NULL, "更新成功！", "提示", MB_OK);
+    }
+
     return 0;
 }
 
@@ -313,6 +348,27 @@ void StuManagement::drawBackground()
 void StuManagement::eventLoop()
 {
     stuTable->eventLoop(message);
+
+    //add event
+    addBtn->event();
+
+    //Line show
+    addStuLine->event();
+
+    //del event
+    delBtn->event();
+
+    //Line show
+    delStuLine->event();
+
+    //line Show
+    updateLine->event();
+
+    //event
+    updateBtn->event();
+
+    //btn show
+    updateBtn->show();
 }
 
 
