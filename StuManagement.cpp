@@ -13,12 +13,11 @@ StuManagement::StuManagement()
     ::settextstyle(25, 0, "ÀŒÃÂ");
 
     //mainview button init
-    menu_btns.push_back(new PushButton("≤Èø¥—ß…˙"));
-    menu_btns.push_back(new PushButton("ÃÌº”—ß…˙"));
-    menu_btns.push_back(new PushButton("…æ≥˝—ß…˙"));
-    menu_btns.push_back(new PushButton("–ﬁ∏ƒ—ß…˙"));
-    menu_btns.push_back(new PushButton("≤È’“—ß…˙"));
-    menu_btns.push_back(new PushButton("ÕÀ≥ˆœµÕ≥"));
+    menu_btns.push_back(new PushButton("查看学生"));
+    menu_btns.push_back(new PushButton("添加学生"));
+    menu_btns.push_back(new PushButton("删除学生"));
+    menu_btns.push_back(new PushButton("修改学生"));
+    menu_btns.push_back(new PushButton("退出系统"));
 
     //the number of buttons
     int btnNum = menu_btns.size();
@@ -39,7 +38,7 @@ StuManagement::StuManagement()
         menu_btns[i]->move(bx, by);
     }
 
-    tableHeader = "—ß∫≈\t–’√˚\t–‘±\tƒÍ¡‰\tºÆπ·\t—ß‘∫";
+    tableHeader = "学号\t姓名\t性别\t年龄\t籍贯\t学院";
 
     //init the table
     stuTable = new StuTable;
@@ -54,6 +53,32 @@ StuManagement::StuManagement()
     //made the table in center
     stuTable->move((Window::width() - stuTable->getGridWidth() * stuTable->getColNum())/2,60);
 
+    //init the addBtn
+    addBtn.reset(new PushButton("添加",900,300,80,40));
+
+    //init the line
+    addStuLine.reset(new EditLine(200, 300,650));
+
+    //set Line
+    addStuLine->setTitle("请输入学生信息");
+    addStuLine->setTipMessage("按照如下格式\n\t姓名 性别 年龄 籍贯 院系\n输入信息");
+
+
+    //init the delBtn
+    delBtn.reset(new PushButton("删除", 900, 300, 80, 40));
+
+    //init the line
+    delStuLine.reset(new EditLine(200, 300, 650));
+
+    //set Line
+    delStuLine->setTitle("请输入学生学号");
+    delStuLine->setTipMessage("输入学生学号");
+
+    //modify
+    updateBtn.reset(new PushButton("提交", 900, 300, 80, 40));
+
+    updateLine.reset(new EditLine(150, 260, 500, 40));
+    updateLine->move((Window::width() - updateLine->getMW()) / 2, 260);
 
 }
 
@@ -168,14 +193,101 @@ void StuManagement::showAllStu() {
 }
 
 int StuManagement::AddStu() {
-    outtextxy(0, 0, "AddStu");
-    cout << "ADDSTU" << endl;
+    //set the title of addIng student
+    const char* addTitle = "请输入学生记录：姓名 性别 年龄 籍贯 院系";
+
+    //set the style of font
+    settextstyle(30, 0, "宋体");
+
+    //begin to draw the font
+    outtextxy((Window::width() - textwidth(addTitle)) / 2, 200, addTitle);
+
+    //btn show
+    addBtn->show();
+
+    addStuLine->show();
+
+    auto str = addStuLine->getContent();
+
+    //when the content is not null
+    if (addBtn->isClicked()) {
+        if (str.empty()) {
+            MessageBox(NULL, "值不能为空", "提示", MB_ICONERROR | MB_OK);
+            return -1;
+        }
+        //cout << addStuLine->getContent() << endl;
+
+        Student stu = Student::StringToStu(str);
+
+        //check the student
+        cout << stu << endl;
+
+        if (stu.getAge() <= 0) {
+            return -1;
+        }
+
+        //insert into database
+        studentDao.AddStudent(stu);
+
+        MessageBox(NULL, "插入成功", "提示", MB_OK);
+
+        //clear the content
+        addStuLine->clear();
+    }
+
     return 0;
 }
 
 int StuManagement::DelStu() {
-    outtextxy(0, 0, "DELSTU");
-    cout << "DELSTU" << endl;
+    //set the title of addIng student
+    const char* addTitle = "请输入学生学号";
+
+    //set the style of font
+    settextstyle(30, 0, "宋体");
+
+    //begin to draw the font
+    outtextxy((Window::width() - textwidth(addTitle)) / 2, 200, addTitle);
+
+    delBtn->show();
+
+    delStuLine->show();
+
+    string num = delStuLine->getContent();
+
+    //when delBtn is clicked
+    if (delBtn->isClicked()) {
+
+        //when the num is null
+        if (num.empty()) {
+            MessageBox(NULL, "值不能为空", "提示", MB_ICONERROR | MB_OK);
+            return -1;
+        }
+
+        //get the object id
+        int id = stoi(num);
+
+        //get the Student and show
+        Student s = studentDao.CheckById(id);
+
+        cout << s;
+
+        if (s.getId() == -1) {
+            MessageBox(NULL, "查无此人！", "提示", MB_ICONERROR | MB_OK);
+            outtextxy(delStuLine->getMX(), delStuLine->getMY(), string("对不起，没有找到学号为" + num + "的学生！").data());
+            cout << num << endl;
+        }
+        else {
+            outtextxy(delStuLine->getMX(), delStuLine->getMX(), s.toString().data());
+            //delete
+            studentDao.DelStudent(id);
+
+        }
+
+        //clear
+        delStuLine->clear();
+
+    }
+
     return 0;
 }
 
