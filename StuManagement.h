@@ -70,6 +70,25 @@ private:
     //table's header
     string tableHeader;
 
+private:
+
+    //add Student button
+    unique_ptr<PushButton> addBtn;
+
+    //the EditLine to add STudent
+    unique_ptr<EditLine>addStuLine;
+
+    //del Student Button
+    unique_ptr<PushButton> delBtn;
+
+    //the EditLine to del STudent
+    unique_ptr<EditLine>delStuLine;
+
+    //update Btn
+    unique_ptr<PushButton>updateBtn;
+
+    //updateLine
+    unique_ptr<EditLine>updateLine;
 };
 
 
