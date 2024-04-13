@@ -154,4 +154,35 @@ vector<Course> CourseDao::GetAllCourseByName(char* cname)
 
     ConnectDB connectDb(host, user, pw, dbName, port);
     connectDb.connect();
+
+    
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from course where name like '%%%s%%'", cname);
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("≤È—Ø ß∞‹£°\n");
+        return vector<Course>();
+    }
+
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res))) {
+
+        Course c;
+        c.setId(atoi(row[0]));
+        c.setName(row[1]);
+        c.setScore(atoi(row[2]));
+        c.setValue(atoi(row[3]));
+
+        cList.push_back(c);
+    }
+
+    return cList;
 }
