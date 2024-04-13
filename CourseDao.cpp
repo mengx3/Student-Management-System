@@ -62,3 +62,34 @@ int CourseDao::DelCourse(int cid)
 
     return 1;
 }
+
+int CourseDao::UpdateCourse(Course course)
+{
+
+    //declare a sql  sentence
+    char updateSql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(updateSql, "update course set name='%s',score=%d,value=%d where id = %d",
+        course.getName().c_str(),course.getScore(),course.getValue(),course.getId());
+
+    //execute query
+    if (mysql_query(con, updateSql)) {
+        fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
+        printf("≤Â»Î ß∞‹£°\n");
+        return 0;
+    }
+
+    return 1;
+}
