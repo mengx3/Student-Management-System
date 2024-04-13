@@ -136,3 +136,48 @@ vector<Deptartment> DeptDao::GetAllDepts()
 
     return dList;
 }
+
+vector<Deptartment> DeptDao::GetAllDeptsByName(char* cname)
+{
+    vector<Deptartment>dList;
+
+    //declare a sql  sentence
+    char sql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from course where name like '%%%s%%'", cname);
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("fail！\n");
+        return vector<Deptartment>();
+    }
+
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res))) {
+
+        Deptartment dept;
+        dept.setDid(row[0]);
+        dept.setName(row[1]);
+        dept.setDirector(row[2]);
+        dept.setCapcity(atoi(row[3]));
+        dept.setNum(atoi(row[4]));
+        dList.push_back(dept);
+    }
+
+    return dList;
+}
