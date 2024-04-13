@@ -69,7 +69,41 @@ public:
     //draw data
     void drawTableData();
 
-    //d
+    //drawButton
+    void drawButton();
+
+    //draw header
+    void drawHeader();
+
+    //updatePage
+    void updatePage();
+
+    //
+    void event();
+
+
+private:
+
+    //Page
+    int currentPage;
+
+    //maxPage
+    int maxPage;
+
+    //the remainum
+    int remainNum;
+
+    //return Pre button
+    PushButton* prevButton;
+
+    //nextPage Button
+    PushButton* nextButton;
+
+    //firstPage Button
+    PushButton* firstButton;
+
+    //endPage Button
+    PushButton* endButton;
 
 
 };
