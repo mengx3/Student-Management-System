@@ -98,3 +98,103 @@ int TeacherDao::UpdateTeacher(Teacher t)
 
 }
 
+vector<Teacher> TeacherDao::GetAllTeachers()
+{
+    vector<Teacher>teaList;
+
+    //declare a sql  sentence
+    char sql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from teacher");
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("²éÑ¯Ê§°Ü£¡\n");
+        return vector<Teacher>();
+    }
+
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res))) {
+
+        Teacher t;
+        t.setTid(atoi(row[0]));
+        t.setTname(row[1]);
+        t.setSex(row[2]);
+        t.setAge(atoi(row[3]));
+        t.setTitle(row[4]);
+        t.setSalary(atoi(row[5]));
+        t.setCoid(atoi(row[6]));
+
+        teaList.push_back(t);
+
+    }
+
+    return teaList;
+}
+
+
+vector<Teacher> TeacherDao::GetTeacherByTname(char *tname)
+{
+    
+
+    //declare a sql  sentence
+    char sql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
+
+    MYSQL* con = connectDb.getCon();
+
+    //    cout<<"come to here!"<<endl;
+
+        //using sprintf to init sql
+    sprintf(sql, "select * from teacher where tname like '%%%s%%'", tname);
+
+    //execute query
+    if (mysql_query(con, sql)) {
+        fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
+        printf("²éÑ¯Ê§°Ü£¡\n");
+        return vector<Teacher>();
+    }
+
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    vector<Teacher>teaList;
+    while ((row = mysql_fetch_row(res))) {
+
+        Teacher t;
+        t.setTid(atoi(row[0]));
+        t.setTname(row[1]);
+        t.setSex(row[2]);
+        t.setAge(atoi(row[3]));
+        t.setTitle(row[4]);
+        t.setSalary(atoi(row[5]));
+        t.setCoid(atoi(row[6]));
+
+        teaList.push_back(t);
+
+    }
+
+    return teaList;
+
+}
