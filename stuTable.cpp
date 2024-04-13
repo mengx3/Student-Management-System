@@ -24,7 +24,31 @@ vector<string> StuTable::split(string str, char seperator='\t')
 }
 
 StuTable::StuTable(int rowNum, int colNum)
-    :BasicWidget(0,0,0,0), rowNum(rowNum), colNum(colNum){
+    :BasicWidget(0,0,0,0),
+    rowNum(rowNum), 
+    colNum(colNum),
+    currentPage(0),
+    maxPage(0),
+    remainNum(0)
+{
+
+    prevButton = new PushButton("上一页");
+    nextButton = new PushButton("下一页");
+    firstButton = new PushButton("首页");
+    endButton = new PushButton("尾页");
+
+
+}
+
+StuTable::~StuTable()
+{
+
+    delete prevButton;
+    delete nextButton;
+    delete firstButton;
+    delete endButton;
+
+    cout << "free is finish!" << endl;
 
 }
 
@@ -85,8 +109,10 @@ void StuTable::setGridHeight(int gridHeight) {
 
 void StuTable::insertData(const string& data)
 {
-
     datas.push_back(data);
+
+    //update the page
+    updatePage();
 }
 
 void StuTable::show()
@@ -94,6 +120,12 @@ void StuTable::show()
     drawTableGrid();
     //drawData
     drawTableData();
+
+    ////draw button
+    //drawButton();
+
+    //draw header
+    drawHeader();
 }
 
 void StuTable::drawTableGrid()
@@ -115,13 +147,26 @@ void StuTable::drawTableGrid()
         line(m_x + i * gridWidth, m_y, m_x + i * gridWidth, m_y + rowNum * gridHeight);
     }
 
+    //if maxPage==0,dont need to draw the button
+    if (maxPage > 0) {
+        drawButton();
+        //cout << "draw the Button" << endl;
+    }
+
 }
 
 void StuTable::drawTableData()
 {
+    //the begin position of data
+    int begin = currentPage * rowNum;
+
+    //the end position of data
+    int end = begin + rowNum;
+    if (end > datas.size()) {
+        end = datas.size();
+    }
 
     //test
-
 
     //deal with every line
     for (int i = 0; i < datas.size(); i++) {
