@@ -191,3 +191,39 @@ void StuTable::drawTableData()
         }
     }
 }
+
+void StuTable::drawButton()
+{
+
+    static bool isMove = false;
+
+    if (!isMove) {
+        //set the position
+        prevButton->move(m_x, m_h + 30);
+        nextButton->move(prevButton->getMX() + prevButton->getMW(), prevButton->getMY());
+        firstButton->move(nextButton->getMX() + nextButton->getMW(), nextButton->getMY());
+        endButton->move(firstButton->getMX() + firstButton->getMW(), firstButton->getMY());
+
+        //cout << nextButton->getMX() << " Y::::" << nextButton->getMY() << endl;
+
+        isMove = true;
+    }
+
+    //show
+    prevButton->show();
+    nextButton->show();
+    firstButton->show();
+    endButton->show();
+
+    char pageInfo[256];
+
+    sprintf(pageInfo, "第%d页/共%d页", currentPage+1, maxPage+1);
+
+    //set color
+
+    //settextcolor(BLUE);
+
+    //show how many pages
+    outtextxy(endButton->getMX() + endButton->getMW() + 150, endButton->getMY()+30, pageInfo);
+
+}
