@@ -22,7 +22,7 @@ vector<Student> StudentDao::GetAllStudent() {
     //execute query
     if (mysql_query(con, sql)) {
         fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
-        printf("≤È—Ø ß∞‹£°\n");
+        printf("查询失败! \n");
         return vector<Student>();
     }
 
@@ -69,7 +69,7 @@ int StudentDao::AddStudent(Student student) {
     //execute query
     if (mysql_query(con, insertSql)) {
         fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
-        printf("≤Â»Î ß∞‹£°\n");
+        printf("插入失败！\n");
         return 0;
     }
 
@@ -101,7 +101,7 @@ int StudentDao::DelStudent(int id) {
     //execute query
     if (mysql_query(con, delSql)) {
         fprintf(stderr, "Failed to delete data :Error %s", mysql_error(con));
-        printf("…æ≥˝ ß∞‹£°\n");
+        printf("删除失败！\n");
         return 0;
     }
 
@@ -132,7 +132,7 @@ int StudentDao::UpdateStudent(Student student) {
     //execute query
     if (mysql_query(con, updateSql)) {
         fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
-        printf("≤Â»Î ß∞‹£°\n");
+        printf("插入失败！\n");
         return 0;
     }
 
@@ -161,7 +161,7 @@ Student StudentDao::CheckById(int id)
     //execute query
     if (mysql_query(con, sql)) {
         fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
-        printf("≤È—Ø ß∞‹£°\n");
+        printf("查询失败！\n");
         Student s;
 
         //a special mark
@@ -208,12 +208,12 @@ vector<Student> StudentDao::CheckByName(char* name) {
 
         //using sprintf to init sql
     sprintf(sql, "select * from student where sname like '%%%s%%'", name);
-    printf("\nƒ£∫˝≤È—Øµƒsql:%s\n", sql);
+    printf("\n模糊查询的sql:%s\n", sql);
 
     //execute query
     if (mysql_query(con, sql)) {
         fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
-        printf("≤È—Ø ß∞‹£°\n");
+        printf("查询失败！\n");
         return vector<Student>();
     }
 
