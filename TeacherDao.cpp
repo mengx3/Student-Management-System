@@ -25,7 +25,7 @@ int TeacherDao::AddTeacher(Teacher t)
     //execute query
     if (mysql_query(con, insertSql)) {
         fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
-        printf("²åÈëÊ§°Ü£¡\n");
+        printf("Failed to insert data\n");
         return 0;
     }
 
@@ -59,7 +59,7 @@ int TeacherDao::DelTeacher(int tid)
     //execute query
     if (mysql_query(con, delSql)) {
         fprintf(stderr, "Failed to delete data :Error %s", mysql_error(con));
-        printf("É¾³ýÊ§°Ü£¡\n");
+        printf("failed to delete data\n");
         return 0;
     }
 
@@ -90,7 +90,7 @@ int TeacherDao::UpdateTeacher(Teacher t)
     //execute query
     if (mysql_query(con, updateSql)) {
         fprintf(stderr, "Failed to insert data :Error %s", mysql_error(con));
-        printf("²åÈëÊ§°Ü£¡\n");
+        printf("Failed to insert data\n");
         return 0;
     }
 
@@ -122,7 +122,7 @@ vector<Teacher> TeacherDao::GetAllTeachers()
     //execute query
     if (mysql_query(con, sql)) {
         fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
-        printf("²éÑ¯Ê§°Ü£¡\n");
+        printf("failed to query data\n");
         return vector<Teacher>();
     }
 
@@ -172,7 +172,7 @@ vector<Teacher> TeacherDao::GetTeacherByTname(char *tname)
     //execute query
     if (mysql_query(con, sql)) {
         fprintf(stderr, "Failed to query data :Error %s", mysql_error(con));
-        printf("²éÑ¯Ê§°Ü£¡\n");
+        printf("Failed to query data\n");
         return vector<Teacher>();
     }
 
