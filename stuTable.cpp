@@ -227,3 +227,85 @@ void StuTable::drawButton()
     outtextxy(endButton->getMX() + endButton->getMW() + 150, endButton->getMY()+30, pageInfo);
 
 }
+
+void StuTable::drawHeader()
+{
+
+    //setLine
+    setlinestyle(PS_SOLID, 3);
+
+    //set header
+    ::rectangle(m_x, m_y - 30, m_x + m_w, m_y);
+
+    for (int i = 0; i < colNum; i++) {
+        line(m_x + i * gridWidth, m_y - 30, m_x + i * gridWidth, m_y);
+    }
+
+    setlinestyle(PS_SOLID, 2);
+
+    //split the header
+    auto he = split(header);
+
+    settextcolor(RED);
+
+    for (int j = 0; j < he.size();j++) {
+
+
+        //HDistence
+        int distanceH = (gridWidth - ::textwidth(he[j].c_str())) / 2;
+
+        //VDistence
+        int distanceV = (40 - ::textheight(he[j].c_str())) / 2;
+
+        outtextxy(m_x + j * gridWidth+distanceH, m_y - gridHeight+distanceV, he[j].c_str());
+    }
+
+    settextcolor(BLUE);
+
+}
+
+void StuTable::updatePage()
+{
+
+    if (rowNum > datas.size()) {
+        maxPage = 0;
+        remainNum = rowNum;
+    }
+    else {
+
+        maxPage = datas.size() / rowNum;
+
+        remainNum = datas.size() % rowNum;
+    }
+
+    //cout << "rowNum:" << rowNum << endl;
+}
+
+void StuTable::event()
+{
+
+    prevButton->event();
+    nextButton->event();
+    firstButton->event();
+    endButton->event();
+
+    if (prevButton->isClicked()) {
+        if (currentPage == 0) {
+            currentPage = 0;
+        }
+        else {
+            currentPage--;
+        }
+    }
+    if (nextButton->isClicked()) {
+        if (currentPage != maxPage) {
+            currentPage++;
+        }
+    }
+    if (firstButton->isClicked()) {
+        currentPage = 0;
+    }
+    if (endButton->isClicked()) {
+        currentPage = maxPage;
+    }
+}
