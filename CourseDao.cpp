@@ -121,4 +121,37 @@ vector<Course> CourseDao::GetAllCourse()
         printf("≤È—Ø ß∞‹£°\n");
         return vector<Course>();
     }
+    
+    MYSQL_RES* res = mysql_store_result(con);
+
+    MYSQL_ROW row;
+    while ((row = mysql_fetch_row(res))) {
+
+        Course c;
+        c.setId(atoi(row[0]));
+        c.setName(row[1]);
+        c.setScore(atoi(row[2]));
+        c.setValue(atoi(row[3]));
+
+        cList.push_back(c);
+    }
+
+    return cList;
+    
+}
+
+vector<Course> CourseDao::GetAllCourseByName(char* cname)
+{
+
+    vector<Course>cList;
+
+    //declare a sql  sentence
+    char sql[256];
+
+    ReadProperties::InitProperties(host, user, pw, dbName, port);
+
+    //    cout<<"come to here!"<<endl;
+
+    ConnectDB connectDb(host, user, pw, dbName, port);
+    connectDb.connect();
 }
